@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Zap } from 'lucide-react';
-import { MAIN_NAV_LINKS, NavItem } from '../config/navigation'; 
+import { MAIN_NAV_LINKS, NavItem } from '../config/navigation';
 
 /**
  * Universal Footer Component for The Acumen Arc.
@@ -43,9 +43,14 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold text-gray-800 mb-4">Core Services</h4>
             <ul className="space-y-2 text-gray-600 text-sm">
               <li>Web Development</li>
+              <li>UI/UX Design</li>
               <li>Marketing PR</li>
               <li>App Development</li>
               <li>Video Production</li>
+              <li>Advanced SEO</li>
+              <li>Email Marketing</li>
+              <li>Social Media</li>
+              <li>24/7 Sales&Support</li>
             </ul>
           </div>
 
