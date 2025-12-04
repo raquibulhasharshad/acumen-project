@@ -90,7 +90,7 @@ export const Hero = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          
+
           {/* Badge */}
           <div className="animate-fade-in opacity-0 [animation-delay:200ms] inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-slate-200/50">
             <Sparkles className="w-3.5 h-3.5 text-[hsl(277,72%,26%)]" />
@@ -100,9 +100,9 @@ export const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="animate-fade-in opacity-0 [animation-delay:400ms] font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-slate-900 mt-6 mb-4">
+          <h1 className="animate-fade-in opacity-0 [animation-delay:400ms] font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-[#4f1271] mt-6 mb-4">
             Build Brands That <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(277,72%,26%)] to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(277,72%,26%)] to-[#bfacc8]">
               Inspire & Convert
             </span>
           </h1>

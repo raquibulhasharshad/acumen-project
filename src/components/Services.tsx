@@ -8,6 +8,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+// Define the primary theme color variable for readability
+const THEME_PRIMARY_COLOR = "[hsl(277,72%,26%)]";
+// Define a very light, custom background color for cards (replaces bg-slate-50)
+const CARD_LIGHT_BG = "[#FAFAFD]";
+
 export const Services = () => {
   const services = [
     {
@@ -53,10 +58,11 @@ export const Services = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-sm font-bold text-[hsl(277,72%,26%)] uppercase tracking-widest">
+            {/* Using THEME_PRIMARY_COLOR for "Our Expertise" to match the theme */}
+            <span className={`text-md font-bold text-${THEME_PRIMARY_COLOR} uppercase tracking-widest`}>
               Our Expertise
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className={`font-serif text-4xl md:text-5xl font-bold text-${THEME_PRIMARY_COLOR}`}>
               How We Deliver Growth
             </h2>
           </div>
@@ -71,13 +77,14 @@ export const Services = () => {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="group p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-slate-100 transition-all duration-300"
+              // FIX: Replaced bg-slate-50 with custom light background color and adjusted hover/shadows
+              className={`group p-8 rounded-3xl bg-${CARD_LIGHT_BG} border-2 border-[#F4F4F9] hover:border-purple-200 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-${THEME_PRIMARY_COLOR}/10 hover:bg-white hover:scale-[1.01]`}
             >
-              <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-[hsl(277,72%,26%)] transition-colors duration-300">
-                <service.icon className="w-7 h-7 text-slate-900 group-hover:text-white transition-colors duration-300" />
+              <div className={`w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-${THEME_PRIMARY_COLOR} transition-colors duration-300`}>
+                <service.icon className={`w-7 h-7 text-${THEME_PRIMARY_COLOR} group-hover:text-white transition-colors duration-300`} />
               </div>
 
-              <h3 className="font-serif text-2xl font-semibold text-slate-900 mb-3">
+              <h3 className={`font-serif text-2xl font-semibold text-${THEME_PRIMARY_COLOR} mb-3`}>
                 {service.title}
               </h3>
 
@@ -85,7 +92,7 @@ export const Services = () => {
                 {service.description}
               </p>
 
-              <div className="flex items-center text-sm font-semibold text-[hsl(277,72%,26%)] group-hover:text-slate-900 transition-colors">
+              <div className={`flex items-center text-sm font-semibold text-${THEME_PRIMARY_COLOR} group-hover:text-slate-900 transition-colors`}>
                 Learn more <ArrowRight className="w-4 h-4 ml-1" />
               </div>
             </div>
@@ -95,5 +102,4 @@ export const Services = () => {
     </section>
   );
 };
-
 export default Services;

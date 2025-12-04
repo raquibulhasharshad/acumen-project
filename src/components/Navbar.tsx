@@ -217,22 +217,22 @@ export const Navbar = () => {
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
                     ? "bg-white/80 backdrop-blur-xl py-3 border-b border-slate-200/50"
-                    : ""
+                    : "py-3"
             )}
         >
             <div className="container mx-auto px-6 md:px-8">
                 <nav className="flex items-center justify-between">
                     {/* Logo */}
                     <a href="#" className="flex items-center gap-2 group z-50">
-                        <div className="w-10 h-10 flex items-center justify-center rounded-xl text-white font-bold">
+                        <div className="w-10 h-10 flex items-center bg-[hsla(276, 35%, 78%, 1.00)] justify-center rounded-xl text-white font-bold">
                             <img
                                 src="/assets/TheArc.gif"
                                 alt="The Acumen Arc Logo"
                                 className="w-full h-full object-cover rounded-xl"
                             />
                         </div>
-                        <span className="font-serif text-lg font-bold tracking-tight text-slate-900">
-                            Acumen Arc
+                        <span className="font-serif text-lg font-bold tracking-tight text-[hsl(277,72%,26%)]">
+                            The Acumen Arc
                         </span>
                     </a>
 

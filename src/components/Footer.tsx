@@ -163,15 +163,15 @@ export const Footer = () => {
             {/* Brand */}
             <div className="md:col-span-5">
               <a href="#" className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-[hsl(277,72%,26%)] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[hsla(276, 35%, 78%, 1.00)] flex items-center justify-center">
                   <img
-                    src="/assets/TheArcLog.png"
+                    src="/assets/TheArc.gif"
                     alt="The Acumen Arc Logo"
                     className="w-full h-full object-cover rounded-lg"
                   />
                 </div>
-                <span className="font-serif text-xl font-bold text-slate-900">
-                  Acumen Arc
+                <span className="font-serif text-xl font-bold text-[hsl(277,72%,26%)]">
+                  The Acumen Arc
                 </span>
               </a>
             </div>
