@@ -45,7 +45,7 @@ export const CTA = () => (
     <div className="container mx-auto px-6">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6">
-          Ready to scale?
+          Ready To Scale?
         </h2>
 
         <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">

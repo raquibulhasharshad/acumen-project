@@ -216,7 +216,7 @@ export const Navbar = () => {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-white/80 backdrop-blur-xl py-3 border-b border-slate-200/50"
+                    ? "bg-white/80 backdrop-blur-xl py-3 border-b border-acumen-primary/10"
                     : "py-3"
             )}
         >

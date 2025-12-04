@@ -24,9 +24,9 @@ const config: Config = {
         },
         // --- NEW ACCENT COLORS ADDED ---
         palette: {
-          'maroon-dark': "#4F1721",
-          'lavender-muted': "#BFACC8",
-          'blue-slate': "#C8C6D7",
+          'Purple Heart': "#4F1271",
+          'Pastel Lavender': "#BFACC8",
+          'Royal Purple': "#783F8E",
         }
         // Note: The slate colors used throughout your components (e.g., text-slate-900)
         // are standard Tailwind colors and do not need to be redefined here.
