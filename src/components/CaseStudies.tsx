@@ -11,7 +11,7 @@ export const CaseStudies = () => {
             title: "Redefining Luxury E-commerce",
             tags: ["UX/UI", "Development"],
             // Note: Keeping color gradient classes as they are not slate/brand related
-            image: "bg-acumen-primary/5",
+            image: "/assets/pic9.jpg",
             stat: "+45% Conversion",
         },
         {

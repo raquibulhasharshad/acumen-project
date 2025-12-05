@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
@@ -11,8 +12,8 @@ export const Hero = () => {
     >
       {/* Abstract Background - Using primary brand colors for subtle gradient blur */}
       <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-[hsl(277,72%,26%)]/20 to-blue-600/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-palette-blue-slate/30 to-acumen-primary/20 rounded-full blur-3xl" />
-      {/* <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 to-[hsl(277,72%,26%)]/20 rounded-full blur-3xl" /> */}
+      {/* <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-palette-blue-slate/30 to-acumen-primary/20 rounded-full blur-3xl" /> */}
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 to-[hsl(277,72%,26%)]/20 rounded-full blur-3xl" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/nc')] opacity-5" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -28,10 +29,10 @@ export const Hero = () => {
 
           {/* Headline */}
           <h1 className="animate-fade-in opacity-0 [animation-delay:400ms] font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-acumen-secondary mt-6 mb-4">
-            Build Brands That <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-acumen-primary to-palette-acumen-secondary">
-              Inspire & Convert
-            </span>
+            <span className="text-acumen-secondary">Build Brands That</span> <br className="hidden md:block" />
+            
+            <span className="text-acumen-primary">Inspire &</span> 
+            <span className="text-palette-pastel-lavender"> Convert</span>
           </h1>
 
           {/* Subheadline */}
