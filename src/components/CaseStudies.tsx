@@ -18,17 +18,20 @@ export const CaseStudies = () => {
             client: "Astha Narang",
             title: "Global SEO Dominance",
             tags: ["Strategy", "SEO"],
-            image: "bg-acumen-primary/5",
+            image: "/assets/pic7.jpg",
             stat: "2x Traffic",
         },
         {
             client: "Pomecha",
             title: "Sustainable Brand Launch",
             tags: ["Branding", "Launch"],
-            image: "bg-acumen-primary/5",
+            image: "/assets/pic1.jpg",
             stat: "Record Q1 Sales",
         },
     ];
+
+    // Helper function to check if the string looks like a URL/Path
+    const isImagePath = (path: string) => path.includes('/') || path.includes('.');
 
     return (
         <section id="case-studies" className="py-24 md:py-32 bg-[#FDFCFE]">
@@ -56,11 +59,28 @@ export const CaseStudies = () => {
                         <div key={idx} className="group cursor-pointer">
                             <div
                                 className={cn(
-                                    "rounded-[2rem] aspect-[4/3] mb-6 overflow-hidden relative",
-                                    item.image
+                                    "rounded-[1rem] aspect-[4/3] mb-6 overflow-hidden relative bg-acumen-primary/5 border-2 hover:border-acumen-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-acumen-primary/10 hover:scale-[1.01]",
+                                    !isImagePath(item.image) && item.image
                                 )}
                             >
+                                {/* NEW: Conditional Image Rendering */}
+                                {isImagePath(item.image) && (
+                                    <img
+                                        src={item.image}
+                                        alt={`Case study image for ${item.client}`}
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                        onError={(e) => {
+                                            const target = e.target as HTMLImageElement;
+                                            target.onerror = null;
+                                            target.src = `https://placehold.co/600x400/acumen-primary/ffffff?text=Image+Missing`;
+                                        }}
+                                    />
+                                )}
+                                {/* Overlay for hover effect */}
                                 <div className="absolute inset-0 bg-acumen-primary/10 transition-colors duration-300" />
+                                <div className="absolute inset-0 bg-acumen-secondary/0 group-hover:bg-acumen-secondary/10 transition-colors duration-300" />
+
+                                {/* Stat/CTA content */}
                                 <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     {/* Stat text uses acumen-secondary for dark contrast */}
                                     <span className="bg-white/90 backdrop-blur text-acumen-secondary px-4 py-2 rounded-full text-sm font-semibold">
