@@ -74,7 +74,7 @@ export const Hero = () => {
               Trusted by visionary brands
             </p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale">
-              {["Acme Corp", "GlobalTech", "Nebula", "Velocity", "FoxRun", "DSEnergize"].map(
+              {["Acme Corp", "GlobalTech", "Nebula", "Velocity", "FoxRun", "DSenergize"].map(
                 (logo) => (
                   <span
                     key={logo}

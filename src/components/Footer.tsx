@@ -1,6 +1,6 @@
 "use client";
 
-import { Share2, Globe, Mail, ArrowRight } from "lucide-react";
+import { Linkedin, Mail, ArrowRight, Facebook } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,16 +44,38 @@ export const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              {[Share2, Globe, Mail].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  // FIX: Updated background and text colors from slate/HSL to custom shades
-                  className="w-10 h-10 rounded-full bg-acumen-primary/5 flex items-center justify-center text-acumen-light hover:bg-acumen-primary hover:text-white transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-acumen-primary/5 flex items-center justify-center text-acumen-light hover:bg-acumen-primary hover:text-white transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-acumen-primary/5 flex items-center justify-center text-acumen-light hover:bg-acumen-primary hover:text-white transition-colors"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-acumen-primary/5 flex items-center justify-center text-acumen-light hover:bg-acumen-primary hover:text-white transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:contact@example.com"
+                className="w-10 h-10 rounded-full bg-acumen-primary/5 flex items-center justify-center text-acumen-light hover:bg-acumen-primary hover:text-white transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
