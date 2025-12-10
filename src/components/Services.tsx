@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import {
   Globe,
   Palette,
@@ -7,10 +10,11 @@ import {
   Search,
   ArrowRight,
 } from "lucide-react";
-
-// The constants are removed as we now use direct Tailwind classes (e.g., bg-acumen-primary).
+import { motion } from "framer-motion";
 
 export const Services = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const services = [
     {
       icon: Globe,
@@ -51,62 +55,153 @@ export const Services = () => {
   ];
 
   return (
-    // Parent section background remains white
-    <section id="services" className="py-16 md:py-24 bg-white relative">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+    // Added 'z-0' to the section to keep it below the navbar (assuming Navbar is z-50+)
+    <section id="services" className="py-4 md:py-20 bg-white relative z-0">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 md:mb-6 gap-4 md:gap-8">
           <div className="max-w-2xl">
-            {/* Using the custom acumen-primary color class */}
-            <span className="text-lg font-bold  text-acumen-primary uppercase tracking-widest">
-              Our Expertise
-              <span className="font-serif"> & </span>
+            <span className="text-sm md:text-lg font-bold text-acumen-primary uppercase tracking-widest">
+              Our Expertise <span className="font-serif"> & </span>
             </span>
-            {/* Using acumen-primary for H2 as well for strong branding */}
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-primary">
+            <h2 className="font-serif text-3xl md:text-5xl font-bold text-acumen-primary mt-2">
               Signature Services
             </h2>
           </div>
-
-          {/* Standardizing neutral text color to the darkest brand shade (acumen-secondary) */}
-          {/* <p className="text-acumen-secondary text-lg max-w-md pb-1">
-            Comprehensive services tailored to drive growth and elevate your
-            brand presence.
-          </p> */}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* CONTAINER */}
+        <div
+          ref={containerRef}
+          className={`
+            flex 
+            flex-col md:flex-row 
+            md:overflow-x-auto md:snap-x md:snap-mandatory 
+            gap-6 
+            py-16 /* Padding prevents clipping on hover lift */
+            no-scrollbar
+            px-2
+          `}
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
           {services.map((service, idx) => (
-            <div
+            <motion.div
               key={idx}
-              // Card background uses a very light tint of the brand color for subtle contrast
-              className="group p-8 rounded-3xl bg-acumen-primary/5 border-2 border-transparent hover:border-acumen-primary/30 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-acumen-primary/10 hover:scale-[1.01]"
+              initial={{ opacity: 0, y: 50, x: 20, rotate: 2 }}
+              whileInView={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: idx * 0.1,
+                type: "spring",
+                bounce: 0.3,
+                damping: 20,
+              }}
+              viewport={{ once: true }}
+              style={{
+                position: "sticky",
+                top: `${80 + idx * 10}px`,
+                left: `${idx * 40}px`,
+              }}
+              className={`
+                /* CARD DIMENSIONS */
+                w-full h-[320px] 
+                md:min-w-[550px] md:w-[550px] 
+                md:h-[480px] 
+                md:flex-shrink-0
+                
+                snap-center
+                
+                /* APPEARANCE */
+                group relative flex flex-col justify-between
+                p-6 md:p-8 rounded-[2rem]
+                
+                bg-[#F9F5FF]
+                
+                /* BORDER */
+                border-[3px] border-white
+                hover:border-acumen-primary/30
+                transition-colors duration-300
+                
+                /* SHADOW */
+                shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]
+                
+                cursor-pointer
+                overflow-hidden
+                
+                /* Z-INDEX FIX: Changed from z-10 to z-0 so it stays under navbar */
+                z-0
+              `}
+              // HOVER INTERACTION
+              whileHover={{
+                y: -12,
+                scale: 1.02,
+                // Z-INDEX FIX: Changed from z-50 to z-20. 
+                // This is high enough to overlap other cards, but low enough to stay under a z-50 Navbar.
+                zIndex: 20, 
+                boxShadow: "0 30px 60px -15px rgba(88,28,135,0.15)",
+              }}
             >
-              <div
-                // Icon background uses a subtle light shade (acumen-light/20) and switches to primary on hover
-                className="w-14 h-14 rounded-2xl bg-acumen-light/20 flex items-center justify-center mb-6 group-hover:bg-acumen-primary transition-colors duration-300"
-              >
-                {/* Icon color uses acumen-primary and switches to white on hover */}
-                <service.icon className="w-7 h-7 text-acumen-primary group-hover:text-white transition-colors duration-300" />
+              {/* DECORATIVE BLOB */}
+              <motion.div
+                className="absolute -right-12 -top-12 w-40 h-40 bg-acumen-primary/5 rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* CONTENT WRAPPER */}
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                  {/* ICON */}
+                  <motion.div
+                    className="
+                      w-12 h-12 md:w-16 md:h-16 
+                      rounded-2xl bg-white flex items-center justify-center mb-6 md:mb-8 
+                      shadow-sm group-hover:bg-acumen-primary transition-all duration-300
+                    "
+                    whileHover={{ rotate: -5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <service.icon className="w-6 h-6 md:w-8 md:h-8 text-acumen-primary group-hover:text-white transition-colors duration-300" />
+                  </motion.div>
+
+                  {/* TEXT */}
+                  <div className="group-hover:translate-x-1 transition-transform duration-300 ease-out">
+                    <h3 className="font-serif text-xl md:text-3xl font-semibold text-acumen-secondary mb-3 md:mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-acumen-light text-sm md:text-lg leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* FOOTER */}
+                <div className="flex items-center text-xs md:text-sm font-bold tracking-wide text-acumen-primary uppercase mt-auto">
+                  <span className="group-hover:mr-2 transition-all duration-300">
+                    Learn more
+                  </span>
+                  <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-1.5" />
+                </div>
               </div>
-
-              {/* H3 text uses the dark brand shade (acumen-secondary) */}
-              <h3 className="font-serif text-2xl font-semibold text-acumen-secondary mb-3">
-                {service.title}
-              </h3>
-
-              {/* Standardizing neutral text color for description (acumen-light) */}
-              <p className="text-acumen-light leading-relaxed mb-6">
-                {service.description}
-              </p>
-
-              {/* Link uses acumen-primary and switches to the dark brand shade on hover */}
-              <div className="flex items-center text-sm font-semibold text-acumen-primary group-hover:text-acumen-secondary transition-colors">
-                Learn more <ArrowRight className="w-4 h-4 ml-1" />
-              </div>
-            </div>
+            </motion.div>
           ))}
+
+          {/* Spacer */}
+          <div className="hidden md:block min-w-[50px] flex-shrink-0" />
         </div>
       </div>
     </section>
   );
 };
+
+export default Services;
