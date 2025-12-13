@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const CTA = () => (
   // FIX 1: Section background changed from hex to subtle brand tint
-  <section id="contact" className="py-20 bg-white relative">
+  <section id="contact" className="py-12 bg-white relative">
     <div className="container mx-auto px-6">
       <div className="max-w-4xl mx-auto text-center">
         {/* FIX 2: Headline text color updated to darkest brand shade */}

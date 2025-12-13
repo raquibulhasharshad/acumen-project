@@ -127,7 +127,7 @@ const ContactUs = () => {
                                     Let's build something <span className="text-acumen-primary font-serif italic">visionary.</span>
                                 </h1>
 
-                                <p className="text-lg text-slate-600 mb-12 max-w-lg leading-relaxed">
+                                <p className="text-lg text-acumen-light mb-12 max-w-lg leading-relaxed">
                                     Whether you need a complete brand overhaul or a technical transformation, we are ready to help you scale. Tell us about your project.
                                 </p>
 
@@ -138,8 +138,8 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-acumen-secondary mb-1">Email Us</h3>
-                                            <p className="text-slate-500 hover:text-acumen-primary transition-colors cursor-pointer">syedah@theacumenarc.com</p>
-                                            <p className="text-slate-500 hover:text-acumen-primary transition-colors cursor-pointer">info@theacumenarc.com</p>
+                                            <p className="text-acumen-light hover:text-acumen-primary transition-colors cursor-pointer">syedah@theacumenarc.com</p>
+                                            <p className="text-acumen-light hover:text-acumen-primary transition-colors cursor-pointer">info@theacumenarc.com</p>
                                         </div>
                                     </div>
 
@@ -149,7 +149,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-acumen-secondary mb-1">Visit Us</h3>
-                                            <p className="text-slate-500">CIE, 4C(Gate: 4), Jamia Milia Islamia<br />New Delhi, India 110025</p>
+                                            <p className="text-acumen-light">CIE, 4C(Gate: 4), Jamia Milia Islamia<br />New Delhi, India 110025</p>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@ const ContactUs = () => {
                                                 <CheckCircle2 className="w-10 h-10 text-green-600" />
                                             </div>
                                             <h3 className="text-2xl font-bold text-acumen-secondary mb-2">Message Sent!</h3>
-                                            <p className="text-slate-500 max-w-xs mx-auto mb-8">
+                                            <p className="text-acumen-light max-w-xs mx-auto mb-8">
                                                 Redirecting you to WhatsApp to complete your inquiry...
                                             </p>
                                             <Button variant="outline" onClick={() => { setIsSuccess(false); setSelectedServices([]); }}>
@@ -209,14 +209,14 @@ const ContactUs = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                                    className="md:hidden w-full px-4 py-3 rounded-xl bg-slate-50/50 border border-slate-200 text-left text-sm text-slate-600 flex justify-between items-center focus:border-acumen-primary focus:ring-1 focus:ring-acumen-primary transition-all"
+                                                    className="md:hidden w-full px-4 py-3 rounded-xl bg-slate-50/50 border border-slate-200 text-left text-sm text-acumen-secondary flex justify-between items-center focus:border-acumen-primary focus:ring-1 focus:ring-acumen-primary transition-all"
                                                 >
                                                     <span className="truncate mr-2">
                                                         {selectedServices.length > 0 
                                                             ? selectedServices.join(", ") 
                                                             : "Select Services..."}
                                                     </span>
-                                                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-200 text-slate-400", isDropdownOpen && "rotate-180")} />
+                                                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-200 text-acumen-light", isDropdownOpen && "rotate-180")} />
                                                 </button>
 
                                                 {/* Services List (Dropdown on Mobile, Grid on Desktop) */}
@@ -238,7 +238,7 @@ const ContactUs = () => {
                                                                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border text-left",
                                                                 selectedServices.includes(service)
                                                                     ? "bg-acumen-primary text-white border-acumen-primary shadow-md shadow-acumen-primary/20"
-                                                                    : "bg-white text-slate-500 border-slate-200 hover:border-acumen-primary/50 hover:text-acumen-primary"
+                                                                    : "bg-white text-acumen-secondary border-acumen-primary/10 hover:border-acumen-primary hover:text-acumen-primary"
                                                             )}
                                                         >
                                                             {service}
@@ -281,7 +281,7 @@ const ContactUs = () => {
                                                 )}
                                             </Button>
 
-                                            <p className="text-xs text-center text-slate-400 mt-4">
+                                            <p className="text-xs text-center text-acumen-light mt-4">
                                                 By submitting this form, you agree to our <a href="/privacy" className="underline hover:text-acumen-primary">Privacy Policy</a>.
                                             </p>
                                         </form>

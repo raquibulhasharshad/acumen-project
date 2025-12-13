@@ -58,6 +58,15 @@ export const CaseStudies = () => {
                     </Link>
                 </div>
 
+                {/* Mobile: sticky "View All Work" button pinned to top of this section while visible */}
+                <div className="md:hidden sticky top-20 z-40 mb-6">
+                    <Link href="/allcasestudies" className="w-full block">
+                        <Button variant="outline" className="w-full">
+                            View All Work
+                        </Button>
+                    </Link>
+                </div>
+
                 <div className="grid lg:grid-cols-3 gap-8">
                     {cases.map((item, idx) => (
                         <div key={idx} className="group cursor-pointer">
@@ -113,14 +122,7 @@ export const CaseStudies = () => {
                     ))}
                 </div>
 
-                <div className="mt-12 text-center md:hidden">
-                     {/* 3. Mobile Button Wrapped in Link (Replaced onClick) */}
-                    <Link href="/allcasestudies" className="w-full block">
-                        <Button variant="outline" className="w-full">
-                            View All Work
-                        </Button>
-                    </Link>
-                </div>
+                {/* mobile button moved to section top (sticky) */}
             </div>
         </section>
     );

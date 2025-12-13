@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { 
-  ArrowUpRight, 
-  Menu, 
-  Instagram, 
-  Linkedin, 
-  Twitter,
-  Search,
-  Filter
+    ArrowUpRight, 
+    ChevronDown,
+    Instagram, 
+    Linkedin, 
+    Twitter,
+    Search,
+    Filter
 } from "lucide-react";
 import Navbar from "../Navbar";
 import { CTA } from "../CTA";
@@ -86,6 +86,8 @@ const PROJECTS = [
 const AllCaseStudies = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [mounted, setMounted] = useState(false);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
     useEffect(() => {
         setMounted(true);
@@ -150,6 +152,14 @@ const AllCaseStudies = () => {
                 .animate-fade-in {
                     animation: fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
                 }
+
+                /* Hide native scrollbar buttons and hide scrollbar for pill container */
+                .mask-gradient {
+                    -ms-overflow-style: none; /* IE and Edge */
+                    scrollbar-width: none; /* Firefox */
+                }
+                .mask-gradient::-webkit-scrollbar { height: 0; }
+                .mask-gradient::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
             `}</style>
             <Navbar />
             
@@ -164,7 +174,7 @@ const AllCaseStudies = () => {
                     <h1 className="font-serif text-4xl md:text-6xl font-bold text-acumen-secondary mb-6 leading-tight">
                         Hall of Impact
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-acumen-light max-w-2xl leading-relaxed">
                         Explore our comprehensive list of digital transformations. 
                         From code to creative, see how we help businesses evolve and scale in the digital age.
                     </p>
@@ -172,10 +182,58 @@ const AllCaseStudies = () => {
             </div>
 
             {/* FILTER BAR - STICKY */}
-            <div className="sticky top-20 z-30 bg-acumen-primary/5 backdrop-blur-md border-acumen-secondary rounded-full py-4 mb-12 shadow-sm">
+            <div className="sticky top-20 z-30 bg-white backdrop-blur-md border-acumen-secondary/10 border-rounded-full py-4 mb-12 shadow-sm">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto mask-gradient">
+                        {/* Mobile: compact dropdown + search */}
+                        <div className="w-full md:hidden flex items-center justify-between gap-3">
+                            <div className="relative w-2/3">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                                    className="md:hidden w-full px-4 py-3 rounded-xl bg-white border border-acumen-primary/10 text-left text-sm text-acumen-secondary flex justify-between items-center focus:border-acumen-primary focus:ring-1 focus:ring-acumen-primary transition-all"
+                                >
+                                    <span className="truncate mr-2">{activeCategory}</span>
+                                    <ChevronDown className={cn("w-4 h-4 transition-transform duration-200 text-acumen-light", isFilterOpen && "rotate-180")} />
+                                </button>
+
+                                {isFilterOpen && (
+                                    <>
+                                        <div className="absolute left-0 right-0 mt-2 bg-white p-4 rounded-xl shadow-xl border border-slate-100 z-40">
+                                            {CATEGORIES.map((cat) => (
+                                                <button
+                                                    key={cat}
+                                                    onClick={() => { setActiveCategory(cat); setIsFilterOpen(false); }}
+                                                    className={cn(
+                                                        "w-full text-left px-3 py-2 rounded-md text-sm mb-1",
+                                                        activeCategory === cat
+                                                            ? "bg-acumen-primary text-white"
+                                                            : "text-acumen-secondary hover:bg-acumen-primary/10"
+                                                    )}
+                                                >
+                                                    {cat}
+                                                </button>
+                                            ))}
+                                        </div>
+                                        {/* Backdrop to close dropdown on outside click */}
+                                        <div className="fixed inset-0 z-30 md:hidden" onClick={() => setIsFilterOpen(false)} />
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="w-1/3 flex justify-end">
+                                <button
+                                    onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                                    className="px-3 py-2 rounded-full bg-acumen-secondary/20 border border-acumen-primary/30 text-acumen-secondary"
+                                    aria-label="Toggle search"
+                                >
+                                    <Search className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Desktop & tablet: category pills (existing) and search */}
+                        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto mask-gradient hidden md:flex">
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
@@ -184,7 +242,7 @@ const AllCaseStudies = () => {
                                         "px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border whitespace-nowrap",
                                         activeCategory === cat
                                             ? "bg-acumen-primary text-white border-acumen-primary shadow-md shadow-acumen-primary/20 scale-105"
-                                            : "bg-white text-slate-500 border-slate-200 hover:border-acumen-primary hover:text-acumen-primary"
+                                            : "bg-white text-acumen-light border-acumen-primary/10 hover:border-acumen-primary hover:text-acumen-primary"
                                     )}
                                 >
                                     {cat}
@@ -192,33 +250,47 @@ const AllCaseStudies = () => {
                             ))}
                         </div>
                         
-                        {/* Search Bar */}
+                        {/* Search Bar (desktop) */}
                         <div className="w-full md:w-auto hidden md:block group">
-                            <div className="flex items-center bg-acumen-secondary/25 border border-slate-200 rounded-full px-4 py-2 w-64 focus-within:border-acumen-primary focus-within:ring-1 focus-within:ring-acumen-primary/20 transition-all duration-300">
-                                <Search className="w-4 h-4 text-slate-400 mr-2 group-focus-within:text-acumen-primary transition-colors" />
+                            <div className="flex items-center bg-white border border-acumen-primary/30 rounded-full px-4 py-2 w-64 focus-within:border-acumen-primary focus-within:ring-1 focus-within:ring-acumen-primary/20 transition-all duration-300">
+                                <Search className="w-4 h-4 text-acumen-light mr-2 group-focus-within:text-acumen-primary transition-colors" />
                                 <input 
                                     type="text" 
                                     placeholder="Search case studies..." 
-                                    className="bg-transparent border-none outline-none text-sm w-full text-acumen-secondary placeholder:text-slate-400"
+                                    className="bg-transparent border-none outline-none text-sm w-full text-acumen-secondary placeholder:text-acumen-light"
                                 />
                             </div>
                         </div>
                     </div>
+
+                    {/* Mobile: expandable search input */}
+                    {isMobileSearchOpen && (
+                        <div className="md:hidden mt-3">
+                            <div className="flex items-center bg-acumen-secondary/30 border border-acumen-primary/30 rounded-full px-4 py-2 w-full transition-all duration-200">
+                                <Search className="w-4 h-4 text-acumen-light mr-2" />
+                                <input
+                                    type="text"
+                                    placeholder="Search case studies..."
+                                    className="bg-transparent border-none outline-none text-sm w-full text-acumen-secondary placeholder:text-acumen-light"
+                                />
+                            </div>
+                        </div>
+                    )}
+                    </div>
                 </div>
-            </div>
 
             {/* GRID SECTION */}
             <div className="container mx-auto px-6 pb-32">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProjects.map((item, index) => (
                         <div 
                             key={item.id} 
                             // Using the animation class from your config
-                            className="group cursor-pointer block animate-fade-in opacity-0 fill-mode-forwards"
+                            className="group cursor-pointer block animate-fade-in opacity-0 fill-mode-forwards rounded-2xl overflow-hidden bg-white"
                             style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                         >
                             {/* Card Image Area */}
-                            <div className="rounded-2xl aspect-[4/3] mb-6 overflow-hidden relative bg-[#F3F0FF] border-2 border-transparent group-hover:border-acumen-primary/20 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-acumen-primary/10 group-hover:-translate-y-2">
+                            <div className="rounded-2xl aspect-[4/3] mb-6 overflow-hidden relative bg-[#F3F0FF] transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-acumen-primary/10 group-hover:-translate-y-2">
                                 <img
                                     src={item.image}
                                     alt={`Case study for ${item.client}`}
@@ -245,7 +317,7 @@ const AllCaseStudies = () => {
                                     <span className="text-[10px] font-bold text-acumen-primary uppercase tracking-widest bg-acumen-primary/5 px-2 py-1 rounded">
                                         {item.category}
                                     </span>
-                                    <span className="text-xs text-slate-400 font-medium">
+                                    <span className="text-xs text-acumen-light font-medium">
                                         {item.client}
                                     </span>
                                 </div>
@@ -253,7 +325,7 @@ const AllCaseStudies = () => {
                                 <h3 className="font-serif text-2xl font-bold text-acumen-secondary group-hover:text-acumen-primary transition-colors mb-3">
                                     {item.title}
                                 </h3>
-                                <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                                <p className="text-acumen-light text-sm leading-relaxed line-clamp-2">
                                     {item.desc}
                                 </p>
                             </div>
@@ -263,8 +335,8 @@ const AllCaseStudies = () => {
 
                 {/* Empty State */}
                 {filteredProjects.length === 0 && (
-                    <div className="text-center py-20 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
-                        <p className="text-slate-400 text-lg mb-4">No projects found in this category.</p>
+                    <div className="text-center py-20 bg-slate-50 rounded-2xl border-2 border-dashed border-acumen-primary/10">
+                        <p className="text-acumen-light text-lg mb-4">No projects found in this category.</p>
                         <Button 
                             variant="ghost"
                             onClick={() => setActiveCategory("All")}
