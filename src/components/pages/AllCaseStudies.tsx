@@ -22,7 +22,6 @@ const PROJECTS = [
         client: "DSenergize",
         title: "Solar IoT Analytics Platform",
         category: "App Development",
-        // Image: Solar Panels / Energy
         image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2070&auto=format&fit=crop",
         stat: "Max Energy Gen",
         desc: "Development of a cloud-based energy management dashboard allowing real-time remote monitoring, predictive maintenance, and data logging for solar assets."
@@ -32,7 +31,6 @@ const PROJECTS = [
         client: "REQX",
         title: "Global IT Talent Portal",
         category: "Web Development",
-        // Image: Corporate/Tech Abstract
         image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
         stat: "Top-Tier Vetting",
         desc: "Designing a corporate digital interface to connect businesses with executive IT talent and specialized consulting services for digital transformation."
@@ -42,7 +40,6 @@ const PROJECTS = [
         client: "ShapeIQ",
         title: "Sustainable MedTech Launch",
         category: "Strategy",
-        // Image: Medical/3D Printing Abstract
         image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop",
         stat: "90% Less Waste",
         desc: "Brand positioning and market entry strategy for 'EcoCast,' a revolutionary recycled 3D-printed orthopedic product driving the circular economy."
@@ -52,7 +49,6 @@ const PROJECTS = [
         client: "KrishiGRO",
         title: "Eco-Agri Brand Identity",
         category: "Branding",
-        // Image: Agriculture/Smart Farming
         image: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         stat: "Zero Emission Tech",
         desc: "Strategic brand positioning for the 'Tesla of Tillers,' launching the Bheem 1.0 electric multi-utility vehicle to revolutionize rural farming."
@@ -62,7 +58,6 @@ const PROJECTS = [
         client: "SLV",
         title: "Global Consultancy Portal",
         category: "Web Development",
-        // Image: Global Business/Architecture
         image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
         stat: "5+ Sector Reach",
         desc: "Development of a corporate web platform showcasing end-to-end international market entry, procurement, and cross-border growth strategies."
@@ -72,7 +67,6 @@ const PROJECTS = [
         client: "UMPL",
         title: "EV Ecosystem Visibility",
         category: "Search Engine Optimization",
-        // Image: Electric Vehicle/Charging
         image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&auto=format&fit=crop",
         stat: "Net Zero Aligned",
         desc: "Comprehensive SEO strategy to position 'eMOTION' retrofit kits as a central hub in India's EV ecosystem and self-reliant mobility goals."
@@ -82,7 +76,6 @@ const PROJECTS = [
         client: "NFI",
         title: "AI Analytics SaaS Platform",
         category: "Marketing",
-        // Image: AI/Data Visualization
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
         stat: "Real-Time Processing",
         desc: "UI/UX design and development for a drag-and-drop AI platform, enabling real-time visual data analytics and edge computing for drones."
