@@ -12,7 +12,7 @@ export const CaseStudies = () => {
             client: "DSenergize",
             title: "Solar IoT Analytics Platform",
             tags: ["App Development"],
-            image: "/assets/pic1.jpg",
+            image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2070&auto=format&fit=crop",
             stat: "Max Energy Gen",
             desc: "Development of a cloud-based energy management dashboard allowing real-time remote monitoring, predictive maintenance, and data logging for solar assets."
         },
@@ -21,7 +21,7 @@ export const CaseStudies = () => {
             client: "ReqX",
             title: "Global IT Talent Portal",
             tags: ["Web Development"],
-            image: "/assets/pic9.jpg",
+            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
             stat: "Top-Tier Vetting",
             desc: "Designing a corporate digital interface to connect businesses with executive IT talent and specialized consulting services for digital transformation."
         },
@@ -30,7 +30,7 @@ export const CaseStudies = () => {
             client: "ShapeIQ",
             title: "Sustainable MedTech Launch",
             tags: ["Strategy"],
-            image: "/assets/pic7.jpg",
+            image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop",
             stat: "90% Less Waste",
             desc: "Brand positioning and market entry strategy for 'EcoCast,' a revolutionary recycled 3D-printed orthopedic product driving the circular economy."
         }
@@ -52,7 +52,7 @@ export const CaseStudies = () => {
                             Hall of Impact
                         </h2>
                     </div>
-                    
+
                     {/* Desktop Button Wrapped in Link */}
                     <Link href="/allcasestudies" className="hidden md:block">
                         <Button
