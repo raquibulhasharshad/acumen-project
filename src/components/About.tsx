@@ -62,7 +62,7 @@ export const About = () => (
                   <Heart className="w-6 h-6 text-acumen-secondary" />
                 </div>
                 <div>
-                  <div className="font-bold text-acumen-secondary">Dr. Syedah Fatma Akhter</div>
+                  <div className="font-bold text-acumen-secondary">Shahbaz Akhter</div>
                   {/* Text must be a darker neutral shade */}
                   <div className="text-sm text-acumen-light">Founder & CEO</div>
                 </div>
